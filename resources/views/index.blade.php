@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <transition name="slide-fade" mode="out-in">
-                        <router-view></router-view>
+                        @section('main')
                     </transition>
                 </div>
             </div>
