@@ -1,0 +1,17 @@
+{
+  "entry": {
+    "app": [
+      "./js/app.js",
+      "./sass/app.scss"
+    ]
+  },
+  "watch": [
+    "resources/**/*.php",
+    "src/**/*.php",
+    "tests/**/*.php"
+  ],
+  "publicPath": "",
+  "devUrl": "http://ignite-timesheets.dev",
+  "proxyUrl": "http://localhost:3000",
+  "cacheBusting": "[name]_[hash:8]"
+}

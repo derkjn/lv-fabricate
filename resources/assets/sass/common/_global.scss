@@ -1,0 +1,121 @@
+// General
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+body {
+  @extend %default-font;
+  overflow-x: hidden;
+}
+
+// Typography
+a {
+  @extend %default-link;
+
+  &.read-more {
+    @extend %more-link;
+  }
+}
+
+p {
+  @extend %default-font;
+
+  &.intro {
+    @extend %intro-font;
+  }
+
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  @extend %default-title;
+}
+
+h1, .h1 {
+  @extend %h1;
+}
+
+h2, .h2 {
+  @extend %h2;
+}
+
+h3, .h3 {
+  @extend %h3;
+}
+
+h4, .h4 {
+  @extend %h4;
+}
+
+h5, .h5 {
+  @extend %h5;
+}
+
+h6, .h6 {
+  @extend %h6;
+}
+
+:focus {
+  outline: 0;
+}
+
+img {
+  @include transition(all 0.3s ease 0s);
+  line-height: $lh-five;
+  text-align: center;
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+  @include transform-style(preserve-3d);
+}
+
+// General Classes
+.wrap {
+  position: relative;
+  min-height: calc(100vh - 400px); // 400px footer
+  z-index: 1;
+
+  &.inactive {
+    display: none;
+  }
+
+  @include media(">sm") {
+    min-height: calc(100vh - 357px); // 357px footer
+  }
+
+  @include media(">lg") {
+    min-height: calc(100vh - 307px); // 300px footer
+  }
+}
+
+.content {
+}
+
+.main {
+  padding: 0;
+}
+
+.pull-right-md {
+  @include media(">md") {
+    float: right;
+  }
+}
+
+.bg {
+  background-size: cover;
+  background-position: center center;
+}

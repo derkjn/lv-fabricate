@@ -1,0 +1,116 @@
+// Buttons
+button {
+  @extend .btn;
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn {
+  @include transition(all 0.3s ease 0s);
+  @include font-family('FFSuperGroteskWebMedium');
+  @include border-radius(0);
+  font-size: $size-fourteen;
+  text-transform: uppercase;
+  background-color: $blue;
+  letter-spacing: $ls-five;
+  color: $white;
+  border: none;
+  padding: 15px 25px;
+  min-width: 200px;
+
+  @include media(">sm") {
+    font-size: $size-sixteen;
+  }
+
+  @include media(">lg") {
+    font-size: $size-eighteen;
+  }
+
+  &:hover, &:focus, &.hover, &:active, &:active:focus {
+    outline: none;
+    background-color: $white;
+    color: $blue;
+  }
+
+  // Button Colors
+  // Btn Default
+  &.btn-default {
+    background-color: $white;
+    color: $blue;
+
+    &:hover, &:focus, &.hover, &:active, &:active:focus {
+      background-color: $blue;
+      color: $white;
+    }
+
+  }
+
+  // Btn Default
+  &.btn-primary {
+    background-color: $blue;
+    color: $white;
+
+    &:hover, &:focus, &.hover, &:active, &:active:focus {
+      background-color: $blue-one;
+      color: $white;
+    }
+  }
+
+  // Btn Success
+  &.btn-success {
+    background-color: $green;
+    color: $white;
+
+    &:hover, &:focus, &.hover, &:active, &:active:focus {
+      background-color: $white;
+      color: $green;
+    }
+  }
+
+  // Btn Info
+  &.btn-info {
+    background-color: $blue-one;
+    color: $white;
+
+    &:hover, &:focus, &.hover, &:active, &:active:focus {
+      background-color: $white;
+      color: $blue-one;
+    }
+  }
+
+  // Btn Warning
+  &.btn-warning {
+    background-color: $orange;
+    color: $white;
+
+    &:hover, &:focus, &.hover, &:active, &:active:focus {
+      background-color: $white;
+      color: $orange;
+    }
+  }
+
+  // Btn Danger
+  &.btn-danger {
+    background-color: $red;
+    color: $white;
+
+    &:hover, &:focus, &.hover, &:active, &:active:focus {
+      background-color: $white;
+      color: $red;
+    }
+  }
+
+  // Btn Link
+  &.btn-link {
+    background-color: transparent;
+    color: $blue;
+
+    &:hover, &:focus, &.hover, &:active, &:active:focus {
+      background-color: transparent;
+      color: $blue-one;
+      text-decoration: none;
+    }
+  }
+
+}

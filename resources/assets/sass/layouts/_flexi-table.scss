@@ -1,0 +1,7 @@
+table {
+  tr.row {
+    &:before, &:after {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+//Mixins
+
+// Font Family
+@mixin font-family($font-family) {
+  font-family: '#{$font-family}', "Times New Roman", Times, serif;
+  font-weight: 300;
+  font-style: normal;
+  @include font-smoothing();
+}
+
+// Text Fill Color
+@mixin text-fill-color($value) {
+  -webkit-text-fill-color: $value;
+  -moz-text-fill-color: $value;
+  -o-text-fill-color: $value;
+  -ms-text-fill-color: $value;
+  text-fill-color: $value;
+}
+
+// Font Smoothing
+@mixin font-smoothing($value: antialiased) {
+  @if $value == antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+
+// Placeholder
+@mixin input-placeholder-color($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+    @include opacity(1);
+    @include text-fill-color(initial);
+  }
+
+  &:-moz-placeholder {
+    /* Firefox 18- */
+    color: $color;
+    @include opacity(1);
+    @include text-fill-color(initial);
+  }
+
+  &::-moz-placeholder {
+    /* Firefox 19+ */
+    color: $color;
+    @include opacity(1);
+    @include text-fill-color(initial);
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+    @include opacity(1);
+    @include text-fill-color(initial);
+  }
+}
+
+// Keyframes
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName}  {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+// Pointer Events
+@mixin pointer-events($type: none) {
+  $type: unquote($type);
+  @include experimental(pointer-events, $type,
+          -moz, -webkit, not -o, not -ms, -khtml, official
+  );
+}
+
+// Clip Path
+@mixin clip-path($clip) {
+  -webkit-clip-path: $clip;
+  -moz-clip-path: $clip;
+  -ms-clip-path: $clip;
+  clip-path: $clip;
+}

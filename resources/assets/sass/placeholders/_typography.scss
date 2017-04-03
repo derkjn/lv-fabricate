@@ -1,0 +1,284 @@
+// Typography
+
+// Default Font
+%default-font {
+  @include transition(all 0.3s ease 0s);
+  @include font-family('FFSuperGroteskWebRegular');
+  font-size: $size-sixteen;
+  line-height: $lh-one;
+  letter-spacing: $ls-minus-one;
+  color: $black-one;
+}
+
+// Intro Font
+%intro-font {
+  @include font-family('FFTibereWeb');
+  font-size: $size-twenty;
+  text-align: center;
+  color: $blue;
+  margin-top: 6px;
+  line-height: $lh-three;
+
+  @include media(">sm") {
+    margin-top: 6px;
+    font-size: $size-twenty-two;
+    line-height: $lh-four;
+  }
+
+  @include media(">lg") {
+    font-size: $size-twenty-six;
+    padding: 0 35px;
+    line-height: $lh-two;
+  }
+
+}
+
+// Default Link
+%default-link {
+  @include transition(all 0.3s ease 0s);
+  @include font-family('FFSuperGroteskWebMedium');
+  color: $blue;
+
+  &:hover,
+  &:focus,
+  &.active {
+    color: $blue-one;
+    text-decoration: none;
+    outline: 0;
+  }
+}
+
+// More Link
+%more-link {
+  @include font-family('FFSuperGroteskWebMedium');
+  color: $blue;
+
+  &:after {
+    @include transition(all 0.3s ease 0s);
+    @include transform(translateX(0));
+    @include font-family("FontAwesome");
+    display: inline-block;
+    content: "\f105";
+    vertical-align: middle;
+    font-size: $size-twenty-six;
+    padding-left: 7px;
+    margin-top: -3px;
+  }
+
+  @include media(">lg") {
+    font-size: $size-eighteen;
+
+    &:after {
+      font-size: $size-twenty-six;
+    }
+
+  }
+
+  &:hover, &:focus {
+
+    &:after {
+      @include transform(translateX(4px));
+    }
+
+  }
+}
+
+// Default Title
+%default-title {
+  @include transition(all 0.3s ease 0s);
+  @include font-family('FFSuperGroteskWebMedium');
+  color: $blue;
+  line-height: $lh-one;
+  letter-spacing: $ls-minus-one;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+
+  a {
+    color: inherit;
+
+    &:hover, &:focus, &:visited {
+      color: inherit;
+    }
+  }
+
+  &.light {
+    color: $gray-one;
+  }
+}
+
+// H1 Title
+%h1 {
+  @extend %default-title;
+  font-size: $size-twenty-five;
+
+  @include media(">sm") {
+    font-size: $size-forty;
+  }
+
+  @include media(">lg") {
+    font-size: $size-sixty;
+  }
+
+}
+
+%h2 {
+  @extend %default-title;
+  font-size: $size-twenty;
+
+  @include media(">sm") {
+    font-size: $size-thirty;
+  }
+
+  @include media(">lg") {
+    font-size: $size-forty;
+  }
+
+}
+
+%h3 {
+  @extend %default-title;
+  font-size: $size-fifteen;
+
+  @include media(">sm") {
+    font-size: $size-twenty;
+  }
+
+  @include media(">lg") {
+    font-size: $size-thirty;
+  }
+
+}
+
+%h4 {
+  @extend %default-title;
+  @include font-family('FFTibereWeb');
+  text-transform: none;
+  font-size: $size-eighteen;
+  letter-spacing: $ls-minus-zero;
+
+  @include media(">sm") {
+    font-size: $size-twenty-two;
+  }
+
+  @include media(">lg") {
+    font-size: $size-twenty-six;
+  }
+
+}
+
+%h5 {
+  @extend %default-title;
+  @include font-family('FFSuperGroteskWebRegular');
+  text-transform: none;
+  color: $gray-six;
+  font-size: $size-sixteen;
+
+  @include media(">sm") {
+    font-size: $size-eighteen;
+  }
+
+  @include media(">lg") {
+    font-size: $size-twenty;
+  }
+}
+
+%h6 {
+  @extend %default-title;
+  text-transform: none;
+  font-size: $size-fourteen;
+
+  @include media(">sm") {
+    font-size: $size-sixteen;
+  }
+
+  @include media(">lg") {
+    font-size: $size-eighteen;
+  }
+
+}
+
+// Inline List
+%inline-list {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+// Entry Content Typography
+%entry-content {
+  p {
+    @extend %default-font;
+    line-height: $lh-five;
+    margin-bottom: 15px;
+
+    @include media(">md") {
+      line-height: $lh-four;
+      font-size: $size-eighteen;
+      margin-bottom: 22px;
+    }
+
+  }
+
+  ul, ol {
+    list-style: none;
+    margin-bottom: 15px;
+    padding-left: 31px;
+
+    @include media(">md") {
+      margin-bottom: 22px;
+    }
+
+    li {
+      position: relative;
+      @extend %default-font;
+      line-height: $lh-four;
+      margin-bottom: 7px;
+
+      @include media(">md") {
+        font-size: $size-eighteen;
+      }
+    }
+
+  }
+
+  ul {
+    li {
+      &:before {
+        position: absolute;
+        left: -18px;
+        top: 3px;
+        content: '\25BA';
+        color: $blue;
+        font-size: $size-seven;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  ol {
+    li {
+      counter-increment: item;
+
+      &:before {
+        font-family: $font-times;
+        font-weight: bold;
+        content: counter(item);
+        position: absolute;
+        top: 0;
+        left: -17px;
+        color: $blue;
+        font-size: $size-ten;
+      }
+
+    }
+  }
+
+}
