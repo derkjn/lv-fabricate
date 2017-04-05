@@ -45,7 +45,9 @@ class StoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = new Store($request);
+        $store->save();
+        return redirect()->back()->with('message', 'Data saved.');
     }
 
     /**
