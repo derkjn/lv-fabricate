@@ -35,6 +35,8 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get("stores", "StoresController@index");
         Route::get("stores/new", "StoresController@create");
+        Route::get("stores/{id}", "StoresController@edit");
+        Route::post("stores/{id}", "StoresController@update");
         Route::post("stores/new", "StoresController@store");
     });
     /**

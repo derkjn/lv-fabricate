@@ -45,7 +45,7 @@ class StoresController extends Controller
      */
     public function store(Request $request)
     {
-        $store = new Store($request);
+        $store = new Store($request->all());
         $store->save();
         return redirect()->back()->with('message', 'Data saved.');
     }
@@ -69,7 +69,8 @@ class StoresController extends Controller
      */
     public function edit($id)
     {
-        //
+        $store = Store::find($id);
+        return view('stores.show', ['store' => $store]);
     }
 
     /**
@@ -81,7 +82,10 @@ class StoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $store = Store::find($id);
+        $store->fill($request->all());
+        $store->save();
+        return redirect()->back()->with('message', 'Data saved');
     }
 
     /**
