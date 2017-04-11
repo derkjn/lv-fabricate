@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Carver;
+use App\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -71,7 +72,8 @@ class CarverController extends Controller
     public function edit($id)
     {
         $carver = Carver::find($id);
-        return view('carvers.show', ['carver' => $carver]);
+        $stores = Store::all();
+        return view('carvers.show', ['carver' => $carver, 'stores' => $stores]);
     }
 
     /**

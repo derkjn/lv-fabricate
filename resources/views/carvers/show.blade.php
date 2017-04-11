@@ -13,7 +13,7 @@
     @endif
 
     {{ Form::open([
-    'method' => 'post'
+    'method' => 'post',
     ]) }}
 
     <div class="form-group">
@@ -43,6 +43,9 @@
     <div class="form-group">
         {{ Form::label("low_res", "Low res") }}
         {{ Form::text("low_res", $carver->low_res, ['class' => "form-control"]) }}
+    </div>
+    <div class="form-group" id="app">
+        <prices :stores="{{ $stores }}"></prices>
     </div>
     <div class="form-group text-center">
         {{ link_to("admin/carvers", "Go Back", ['class' => 'btn btn-warning']) }}
