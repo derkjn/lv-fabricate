@@ -18,63 +18,63 @@
 
     <div class="form-group">
         {{ Form::label("name", "Name") }}
-        {{ Form::text("name", null, ['class' => "form-control"]) }}
+        {{ Form::text("name", $brand->name, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("url", "Website") }}
-        {{ Form::text("url", null, ['class' => "form-control"]) }}
+        {{ Form::text("url", $brand->website, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("address", "Address") }}
-        {{ Form::text("address", null, ['class' => "form-control"]) }}
+        {{ Form::text("address", $brand->address, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("city", "City") }}
-        {{ Form::text("city", null, ['class' => "form-control"]) }}
+        {{ Form::text("city", $brand->city, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("state", "State") }}
-        {{ Form::text("state", null, ['class' => "form-control"]) }}
+        {{ Form::text("state", $brand->state, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("country", "Country") }}
-        {{ Form::text("country", null, ['class' => "form-control"]) }}
+        {{ Form::text("country", $brand->country, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("email", "Email") }}
-        {{ Form::text("email", null, ['class' => "form-control"]) }}
+        {{ Form::text("email", $brand->email, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("skype", "Skype") }}
-        {{ Form::text("skype", null, ['class' => "form-control"]) }}
+        {{ Form::text("skype", $brand->skype, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("facebook", "Facebook") }}
-        {{ Form::text("facebook", null, ['class' => "form-control"]) }}
+        {{ Form::text("facebook", $brand->facebook, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("instagram", "Instagram") }}
-        {{ Form::text("instagram", null, ['class' => "form-control"]) }}
+        {{ Form::text("instagram", $brand->instagram, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("pinterest", "Pinterest") }}
-        {{ Form::text("pinterest", null, ['class' => "form-control"]) }}
+        {{ Form::text("pinterest", $brand->pinterest, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("linkedin", "Linkedin") }}
-        {{ Form::text("linkedin", null, ['class' => "form-control"]) }}
+        {{ Form::text("linkedin", $brand->linkedin, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("notes", "Notes") }}
-        {{ Form::text("notes", null, ['class' => "form-control"]) }}
+        {{ Form::text("notes", $brand->notes, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("hi_res", "Hi res") }}
-        {{ Form::text("hi_res", null, ['class' => "form-control"]) }}
+        {{ Form::text("hi_res", $brand->hi_res, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("low_res", "Low res") }}
-        {{ Form::text("low_res", null, ['class' => "form-control"]) }}
+        {{ Form::text("low_res", $brand->low_res, ['class' => "form-control"]) }}
     </div>
     <div class="form-group text-center">
         {{ link_to("admin/stores", "Go Back", ['class' => 'btn btn-warning']) }}

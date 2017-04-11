@@ -25,7 +25,6 @@ class BrandsController extends Controller
     {
         $brands = Brand::all();
         return view('brands.index', ['brands' => $brands]);
-
     }
 
     /**
@@ -46,7 +45,9 @@ class BrandsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = new Brand($request->all());
+        $store->save();
+        return redirect()->back()->with('message', 'Data saved.');
     }
 
     /**
@@ -68,7 +69,8 @@ class BrandsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = Brand::find($id);
+        return view('brands.show', ['brand' => $brand]);
     }
 
     /**
@@ -80,7 +82,10 @@ class BrandsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $brand = Brand::find($id);
+        $brand->fill($request->all());
+        $brand->save();
+        return redirect()->back()->with('message', 'Data saved');
     }
 
     /**

@@ -77,7 +77,7 @@
         {{ Form::text("low_res", null, ['class' => "form-control"]) }}
     </div>
     <div class="form-group text-center">
-        {{ link_to("admin/stores", "Go Back", ['class' => 'btn btn-warning']) }}
+        {{ link_to("admin/brands", "Go Back", ['class' => 'btn btn-warning']) }}
         {{ Form::submit("Save", ['class' => "btn btn-primary"]) }}
     </div>
     {{ Form::close() }}

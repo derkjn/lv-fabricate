@@ -31,16 +31,19 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get("brands", "BrandsController@index");
         Route::get("brands/new", "BrandsController@create");
+        Route::get("brands/{id}", "BrandsController@edit");
         Route::post("brands/new", "BrandsController@store");
+        Route::post("brands/{id}", "BrandsController@update");
 
         Route::get("stores", "StoresController@index");
         Route::get("stores/new", "StoresController@create");
         Route::get("stores/{id}", "StoresController@edit");
-        Route::post("stores/{id}", "StoresController@update");
         Route::post("stores/new", "StoresController@store");
+        Route::post("stores/{id}", "StoresController@update");
     });
     /**
      * Login form submission
      */
     Route::any("/login", "AdminController@login");
 });
+Route::any("/", "AdminController@login");
