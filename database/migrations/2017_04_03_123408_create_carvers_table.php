@@ -16,12 +16,12 @@ class CreateCarversTable extends Migration
         Schema::create('carvers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('type');
-            $table->string('resolution');
-            $table->string('materials');
-            $table->string('health_safety');
-            $table->string('hi_res');
-            $table->string('low_res');
+            $table->string('type')->nullable();
+            $table->string('resolution')->nullable();
+            $table->string('materials')->nullable();
+            $table->string('health_safety')->nullable();
+            $table->string('hi_res')->nullable();
+            $table->string('low_res')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

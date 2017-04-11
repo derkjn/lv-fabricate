@@ -18,31 +18,31 @@
 
     <div class="form-group">
         {{ Form::label("name", "Name") }}
-        {{ Form::text("name", null, ['class' => "form-control"]) }}
+        {{ Form::text("name", $carver->name, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("type", "Type") }}
-        {{ Form::text("type", null, ['class' => "form-control"]) }}
+        {{ Form::text("type", $carver->type, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("resolution", "Resolution") }}
-        {{ Form::text("resolution", null, ['class' => "form-control"]) }}
+        {{ Form::text("resolution", $carver->resolution, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("materials", "Materials") }}
-        {{ Form::text("materials", null, ['class' => "form-control"]) }}
+        {{ Form::text("materials", $carver->materials, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("health_safety", "Health & Safety") }}
-        {{ Form::text("health_safety", null, ['class' => "form-control"]) }}
+        {{ Form::text("health_safety", $carver->health_safety, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("hi_res", "Hi res") }}
-        {{ Form::text("hi_res", null, ['class' => "form-control"]) }}
+        {{ Form::text("hi_res", $carver->hi_res, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("low_res", "Low res") }}
-        {{ Form::text("low_res", null, ['class' => "form-control"]) }}
+        {{ Form::text("low_res", $carver->low_res, ['class' => "form-control"]) }}
     </div>
     <div class="form-group text-center">
         {{ link_to("admin/carvers", "Go Back", ['class' => 'btn btn-warning']) }}

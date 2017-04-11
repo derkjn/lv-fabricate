@@ -46,7 +46,9 @@ class CarverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = new Carver($request->all());
+        $store->save();
+        return redirect()->back()->with('message', 'Data saved.');
     }
 
     /**
@@ -68,7 +70,8 @@ class CarverController extends Controller
      */
     public function edit($id)
     {
-        //
+        $carver = Carver::find($id);
+        return view('carvers.show', ['carver' => $carver]);
     }
 
     /**
@@ -80,7 +83,10 @@ class CarverController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $carver = Carver::find($id);
+        $carver->fill($request->all());
+        $carver->save();
+        return redirect()->back()->with('message', 'Data saved');
     }
 
     /**

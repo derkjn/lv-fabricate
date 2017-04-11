@@ -27,7 +27,9 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get("carvers", "CarverController@index");
         Route::get("carvers/new", "CarverController@create");
+        Route::get("carvers/{id}", "CarverController@edit");
         Route::post("carvers/new", "CarverController@store");
+        Route::post("carvers/{id}", "CarverController@update");
 
         Route::get("brands", "BrandsController@index");
         Route::get("brands/new", "BrandsController@create");
