@@ -85,6 +85,7 @@ class CarverController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd($request->all());
         $carver = Carver::find($id);
         $carver->fill($request->all());
         $carver->save();

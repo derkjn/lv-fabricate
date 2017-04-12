@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Printer;
+use App\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -25,8 +26,8 @@ class PrinterController extends Controller
     public function index()
     {
         $printers = Printer::all();
-
         return view('printers.index', ['printers' => $printers]);
+
     }
 
     /**
@@ -37,7 +38,6 @@ class PrinterController extends Controller
     public function create()
     {
         return view('printers.create');
-
     }
 
     /**
@@ -48,7 +48,9 @@ class PrinterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = new Printer($request->all());
+        $store->save();
+        return redirect()->back()->with('message', 'Data saved.');
     }
 
     /**
@@ -70,7 +72,9 @@ class PrinterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $printer = Printer::find($id);
+        $stores = Store::all();
+        return view('printers.show', ['printer' => $printer, 'stores' => $stores]);
     }
 
     /**
@@ -82,7 +86,11 @@ class PrinterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
+        $printer = Printer::find($id);
+        $printer->fill($request->all());
+        $printer->save();
+        return redirect()->back()->with('message', 'Data saved');
     }
 
     /**

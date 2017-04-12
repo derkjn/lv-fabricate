@@ -19,11 +19,15 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get("printers", "PrinterController@index");
         Route::get("printers/new", "PrinterController@create");
+        Route::get("printers/{id}", "PrinterController@edit");
         Route::post("printers/new", "PrinterController@store");
+        Route::post("printers/{id}", "PrinterController@update");
 
         Route::get("scanners", "ScannerController@index");
         Route::get("scanners/new", "ScannerController@create");
+        Route::get("scanners/{id}", "ScannerController@edit");
         Route::post("scanners/new", "ScannerController@store");
+        Route::post("scanners/{id}", "ScannerController@update");
 
         Route::get("carvers", "CarverController@index");
         Route::get("carvers/new", "CarverController@create");

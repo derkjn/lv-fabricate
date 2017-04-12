@@ -16,13 +16,13 @@ class CreateScannersTable extends Migration
         Schema::create('scanners', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('type');
-            $table->string('scan_tech');
-            $table->string('resolution');
-            $table->string('hd');
-            $table->string('hi_res');
-            $table->string('low_res');
-            $table->text('notes');
+            $table->string('type')->nullable();
+            $table->string('scan_tech')->nullable();
+            $table->string('resolution')->nullable();
+            $table->string('hd')->nullable();
+            $table->string('hi_res')->nullable();
+            $table->string('low_res')->nullable();
+            $table->text('notes')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

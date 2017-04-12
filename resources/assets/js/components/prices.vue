@@ -8,10 +8,13 @@
             <tbody>
             <tr v-for="store in items">
                 <td>
-                    {{ store.name }}
-                <input type="hidden" :value="store.id">
+                    <select name="store[]" class="select2">
+                        <option v-for="option in stores" :key="option.id" :value="option.id">{{ option.name }}</option>
+                    </select>
                 </td>
-                <td><input type="text" v-model="store.price"></td>
+                <td>
+                    <input type="text" name="price[]" v-model="store.price">
+                </td>
             </tr>
             </tbody>
         </table>
@@ -20,21 +23,37 @@
 </template>
 <script>
   import { concat } from 'lodash';
+  require('select2');
+
   export default {
     props: ['stores'],
     data() {
       return {
-        lines : [],
+        lines: [],
       };
     },
     methods: {
       addLine() {
-        this.lines.push({id: 0, name: '',price: 0});
+        this.lines.push({ id: 0, name: '', price: 0 });
+        $('.select2').select2({
+          minimumSearch: 'infinity',
+        })
+      },
+      removeLine(index){
+        //
       },
     },
     computed: {
       items() {
         return concat(this.stores, this.lines);
+      },
+      formattedStores(){
+        return this.stores.map((store) => {
+          return {
+            label: store.name,
+            id: store.id,
+          }
+        });
       }
     },
   }

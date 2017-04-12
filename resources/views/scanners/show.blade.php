@@ -13,39 +13,42 @@
     @endif
 
     {{ Form::open([
-    'method' => 'post'
+    'method' => 'post',
     ]) }}
 
     <div class="form-group">
         {{ Form::label("name", "Name") }}
-        {{ Form::text("name", null, ['class' => "form-control"]) }}
+        {{ Form::text("name", $scanner->name, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("type", "Type") }}
-        {{ Form::text("type", null, ['class' => "form-control"]) }}
+        {{ Form::text("type", $scanner->type, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("resolution", "Resolution") }}
-        {{ Form::text("resolution", null, ['class' => "form-control"]) }}
+        {{ Form::text("resolution", $scanner->resolution, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("materials", "Materials") }}
-        {{ Form::text("materials", null, ['class' => "form-control"]) }}
+        {{ Form::text("materials", $scanner->materials, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("health_safety", "Health & Safety") }}
-        {{ Form::text("health_safety", null, ['class' => "form-control"]) }}
+        {{ Form::text("health_safety", $scanner->health_safety, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("hi_res", "Hi res") }}
-        {{ Form::text("hi_res", null, ['class' => "form-control"]) }}
+        {{ Form::text("hi_res", $scanner->hi_res, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("low_res", "Low res") }}
-        {{ Form::text("low_res", null, ['class' => "form-control"]) }}
+        {{ Form::text("low_res", $scanner->low_res, ['class' => "form-control"]) }}
+    </div>
+    <div class="form-group" id="app">
+        <prices :stores="{{ $stores }}"></prices>
     </div>
     <div class="form-group text-center">
-        {{ link_to("admin/scanners", "Go Back", ['class' => 'btn btn-warning']) }}
+        {{ link_to("admin/carvers", "Go Back", ['class' => 'btn btn-warning']) }}
         {{ Form::submit("Save", ['class' => "btn btn-primary"]) }}
     </div>
     {{ Form::close() }}

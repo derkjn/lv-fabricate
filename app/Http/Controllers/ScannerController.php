@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Scanner;
+use App\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -26,6 +27,7 @@ class ScannerController extends Controller
     {
         $scanners = Scanner::all();
         return view('scanners.index', ['scanners' => $scanners]);
+
     }
 
     /**
@@ -46,7 +48,9 @@ class ScannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $scanner = new Scanner($request->all());
+        $scanner->save();
+        return redirect()->back()->with('message', 'Data saved.');
     }
 
     /**
@@ -68,7 +72,9 @@ class ScannerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $scanner = Scanner::find($id);
+        $stores = Store::all();
+        return view('scanners.show', ['scanner' => $scanner, 'stores' => $stores]);
     }
 
     /**
@@ -80,7 +86,11 @@ class ScannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
+        $scanner = Scanner::find($id);
+        $scanner->fill($request->all());
+        $scanner->save();
+        return redirect()->back()->with('message', 'Data saved');
     }
 
     /**
