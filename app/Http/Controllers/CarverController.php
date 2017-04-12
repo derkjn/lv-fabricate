@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Carver;
+use App\Price;
+use App\Printer;
 use App\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -85,10 +87,13 @@ class CarverController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
         $carver = Carver::find($id);
         $carver->fill($request->all());
         $carver->save();
+        $price = new Price();
+        $price->price = 1200;
+        $price->save();
+        $carver->prices()->save($price);
         return redirect()->back()->with('message', 'Data saved');
     }
 
