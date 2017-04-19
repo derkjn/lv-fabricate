@@ -24,6 +24,7 @@
 <script>
   import { concat } from 'lodash';
   require('select2');
+  require('../../../../node_modules/select2/dist/css/select2.min.css');
 
   export default {
     props: ['stores'],
@@ -32,12 +33,19 @@
         lines: [],
       };
     },
+    mounted(){
+      $('.select2').select2({
+        minimumResultsForSearch: Infinity,
+      });
+    },
     methods: {
       addLine() {
         this.lines.push({ id: 0, name: '', price: 0 });
-        $('.select2').select2({
-          minimumSearch: 'infinity',
-        })
+        setTimeout(() => {
+          $('.select2').select2({
+            minimumResultsForSearch: Infinity,
+          });
+        }, 50);
       },
       removeLine(index){
         //
