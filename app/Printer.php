@@ -15,4 +15,9 @@ class Printer extends Model
         'hi_res',
         'low_res',
     ];
+
+    public function prices()
+    {
+        return $this->morphMany('App\Price', 'model');
+    }
 }

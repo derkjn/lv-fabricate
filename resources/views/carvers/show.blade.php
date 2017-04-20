@@ -45,7 +45,7 @@
         {{ Form::text("low_res", $carver->low_res, ['class' => "form-control"]) }}
     </div>
     <div class="form-group" id="app">
-        <prices :stores="{{ $stores }}"></prices>
+        <prices :stores="{{ $stores }}" :prices="{{$prices}}"></prices>
     </div>
     <div class="form-group text-center">
         {{ link_to("admin/carvers", "Go Back", ['class' => 'btn btn-warning']) }}

@@ -25,16 +25,12 @@
         {{ Form::text("type", $printer->type, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
-        {{ Form::label("resolution", "Resolution") }}
-        {{ Form::text("resolution", $printer->resolution, ['class' => "form-control"]) }}
+        {{ Form::label("cartridge", "Cartridge") }}
+        {{ Form::text("cartridge", $printer->cartridge, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
-        {{ Form::label("materials", "Materials") }}
-        {{ Form::text("materials", $printer->materials, ['class' => "form-control"]) }}
-    </div>
-    <div class="form-group">
-        {{ Form::label("health_safety", "Health & Safety") }}
-        {{ Form::text("health_safety", $printer->health_safety, ['class' => "form-control"]) }}
+        {{ Form::label("colours", "Colours") }}
+        {{ Form::text("colours", $printer->colours, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("hi_res", "Hi res") }}
@@ -45,10 +41,10 @@
         {{ Form::text("low_res", $printer->low_res, ['class' => "form-control"]) }}
     </div>
     <div class="form-group" id="app">
-        <prices :stores="{{ $stores }}"></prices>
+        <prices :stores="{{ $stores }}" :prices="{{ $prices }}"></prices>
     </div>
     <div class="form-group text-center">
-        {{ link_to("admin/carvers", "Go Back", ['class' => 'btn btn-warning']) }}
+        {{ link_to("admin/printers", "Go Back", ['class' => 'btn btn-warning']) }}
         {{ Form::submit("Save", ['class' => "btn btn-primary"]) }}
     </div>
     {{ Form::close() }}

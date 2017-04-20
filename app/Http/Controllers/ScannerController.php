@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Price;
 use App\Scanner;
 use App\Store;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class ScannerController extends Controller
             return $next($request);
         });
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +45,7 @@ class ScannerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -56,7 +58,7 @@ class ScannerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,36 +69,50 @@ class ScannerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $scanner = Scanner::find($id);
+        $prices = $scanner->prices;
         $stores = Store::all();
-        return view('scanners.show', ['scanner' => $scanner, 'stores' => $stores]);
+        return view('scanners.show', ['scanner' => $scanner, 'stores' => $stores, 'prices' => $prices]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
         $scanner = Scanner::find($id);
         $scanner->fill($request->all());
         $scanner->save();
+        /**
+         * Sync prices
+         */
+        $stores = $request->get('store');
+        if (count($stores) > 0) {
+            $scanner->prices()->delete();
+            foreach ($stores as $i => $store) {
+                $price = new Price();
+                $price->price = $request->get('price')[$i];
+                $price->store_id = $store;
+                $price->save();
+                $scanner->prices()->save($price);
+            }
+        }
         return redirect()->back()->with('message', 'Data saved');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

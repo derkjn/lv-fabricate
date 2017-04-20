@@ -80,5 +80,14 @@
                 </li>
             </ul>
         </li>
+        <li class="@if( Request::is('admin/prices*') ) active @endif">
+            <a href="index.html"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Prices</span> <span
+                        class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+                <li class="@if( Request::is('admin/prices') ) active @endif">
+                    <a href="{{ url("admin/prices") }}">All prices</a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </div>

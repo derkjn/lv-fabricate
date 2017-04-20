@@ -17,6 +17,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("/", "AdminController@index");
         Route::get("/logout", "AdminController@logout");
 
+        Route::get("prices", "PricesController@index");
+
         Route::get("printers", "PrinterController@index");
         Route::get("printers/new", "PrinterController@create");
         Route::get("printers/{id}", "PrinterController@edit");

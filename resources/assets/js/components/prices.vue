@@ -6,14 +6,14 @@
             <td>Price</td>
             </thead>
             <tbody>
-            <tr v-for="store in items">
+            <tr v-for="price in items">
                 <td>
                     <select name="store[]" class="select2">
-                        <option v-for="option in stores" :key="option.id" :value="option.id">{{ option.name }}</option>
+                        <option v-for="option in stores" :key="option.id" :value="option.id" v-bind:selected="option.id === price.store_id">{{ option.name }}</option>
                     </select>
                 </td>
                 <td>
-                    <input type="text" name="price[]" v-model="store.price">
+                    <input type="text" name="price[]" v-model="price.price">
                 </td>
             </tr>
             </tbody>
@@ -27,7 +27,7 @@
   require('../../../../node_modules/select2/dist/css/select2.min.css');
 
   export default {
-    props: ['stores'],
+    props: ['stores', 'prices'],
     data() {
       return {
         lines: [],
@@ -53,10 +53,11 @@
     },
     computed: {
       items() {
-        return concat(this.stores, this.lines);
+        return concat(this.prices, this.lines);
       },
       formattedStores(){
-        return this.stores.map((store) => {
+        const vm = this;
+        return this.stores.map((store, index) => {
           return {
             label: store.name,
             id: store.id,

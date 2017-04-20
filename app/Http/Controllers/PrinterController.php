@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Price;
 use App\Printer;
 use App\Store;
 use Illuminate\Http\Request;
@@ -73,8 +74,9 @@ class PrinterController extends Controller
     public function edit($id)
     {
         $printer = Printer::find($id);
+        $prices = $printer->prices;
         $stores = Store::all();
-        return view('printers.show', ['printer' => $printer, 'stores' => $stores]);
+        return view('printers.show', ['printer' => $printer, 'stores' => $stores, 'prices' => $prices]);
     }
 
     /**
@@ -86,10 +88,23 @@ class PrinterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
         $printer = Printer::find($id);
         $printer->fill($request->all());
         $printer->save();
+        /**
+         * Sync prices
+         */
+        $stores = $request->get('store');
+        if(count($stores) > 0){
+            $printer->prices()->delete();
+            foreach($stores as $i => $store){
+                $price = new Price();
+                $price->price = $request->get('price')[$i];
+                $price->store_id = $store;
+                $price->save();
+                $printer->prices()->save($price);
+            }
+        }
         return redirect()->back()->with('message', 'Data saved');
     }
 

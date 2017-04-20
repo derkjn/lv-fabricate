@@ -74,8 +74,9 @@ class CarverController extends Controller
     public function edit($id)
     {
         $carver = Carver::find($id);
+        $prices = $carver->prices;
         $stores = Store::all();
-        return view('carvers.show', ['carver' => $carver, 'stores' => $stores]);
+        return view('carvers.show', ['carver' => $carver, 'stores' => $stores, 'prices' => $prices]);
     }
 
     /**
@@ -90,10 +91,20 @@ class CarverController extends Controller
         $carver = Carver::find($id);
         $carver->fill($request->all());
         $carver->save();
-        $price = new Price();
-        $price->price = 1200;
-        $price->save();
-        $carver->prices()->save($price);
+        /**
+         * Sync prices
+         */
+        $stores = $request->get('store');
+        if(count($stores) > 0){
+            $carver->prices()->delete();
+            foreach($stores as $i => $store){
+                $price = new Price();
+                $price->price = $request->get('price')[$i];
+                $price->store_id = $store;
+                $price->save();
+                $carver->prices()->save($price);
+            }
+        }
         return redirect()->back()->with('message', 'Data saved');
     }
 

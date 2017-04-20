@@ -29,12 +29,12 @@
         {{ Form::text("resolution", $scanner->resolution, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
-        {{ Form::label("materials", "Materials") }}
-        {{ Form::text("materials", $scanner->materials, ['class' => "form-control"]) }}
+        {{ Form::label("scan_tech", "Scan Tech") }}
+        {{ Form::text("scan_tech", $scanner->scan_tech, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
-        {{ Form::label("health_safety", "Health & Safety") }}
-        {{ Form::text("health_safety", $scanner->health_safety, ['class' => "form-control"]) }}
+        {{ Form::label("hd", "HD") }}
+        {{ Form::text("hd", $scanner->hd, ['class' => "form-control"]) }}
     </div>
     <div class="form-group">
         {{ Form::label("hi_res", "Hi res") }}
@@ -45,7 +45,7 @@
         {{ Form::text("low_res", $scanner->low_res, ['class' => "form-control"]) }}
     </div>
     <div class="form-group" id="app">
-        <prices :stores="{{ $stores }}"></prices>
+        <prices :stores="{{ $stores }}" :prices="{{ $prices }}"></prices>
     </div>
     <div class="form-group text-center">
         {{ link_to("admin/carvers", "Go Back", ['class' => 'btn btn-warning']) }}
