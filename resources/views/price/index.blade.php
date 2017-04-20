@@ -1,12 +1,12 @@
 @extends('index')
 @section('main')
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-striped table-bordered table-hover prices-table">
         <thead>
-        <td>#</td>
-        <td>Product</td>
-        <td>Name</td>
-        <td>Store</td>
-        <td>Price</td>
+        <th>#</th>
+        <th>Product</th>
+        <th>Name</th>
+        <th>Store</th>
+        <th>Price</th>
         </thead>
         <tbody>
         @foreach($prices as $price)
